@@ -1,54 +1,61 @@
-%define version	0.8
-%define release	%mkrel 6
+%define name	kmflcomp
+%define version	0.9.5
+%define release	%mkrel 1
 
-%define libname %mklibname %name 0
+%define major		0
+%define libname		%mklibname %name %major
+%define develname	%mklibname %name -d
 
-#%define libkmfl_version	0.5
-
-Name:		kmflcomp
+Name:		%{name}
 Summary:	Compiler for source Tavultesoft Keyman files
-Version:		%{version}
-Release:		%{release}
+Version:	%{version}
+Release:	%{release}
 Group:		System/Internationalization
-License:		GPL
-URL:			http://kmfl.sourceforge.net/
-Source0:		%{name}-%{version}.tar.bz2
+License:	GPL+
+URL:		http://kmfl.sourceforge.net/
+Source0:	http://prdownloads.sourceforge.net/kmfl/%{name}-%{version}.tar.gz
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
-#Requires:			libkmfl >= %{libkmfl_version}
-#BuildRequires:		libkmfl-devel >= %{libkmfl_version}
-BuildRequires:		automake1.8
-BuildRequires:		bison
-BuildRequires:		XFree86-devel
+BuildRequires:	bison
+BuildRequires:	libx11-devel
+BuildRequires:	libxau-devel
+BuildRequires:	libxdmcp-devel
 
 %description
-Kmflcomp is a compiler for source Tavultesoft Keyman files.
-Libkmfl uses the binary Keyman files compiled by kmflcomp.
+KMFL is a keyboarding input method which aims to bring Tavultesoft
+Keyman functionality to Linux.
+
+kmflcomp is one of three parts of the KMFL project. It is a keyboard
+compiler. The other two parts are libkmfl and libscim-kmfl-imengine.
 
 %package -n %libname
 Summary:	Kmflcomp library
 Group:		System/Internationalization
 
 %description -n %libname
-This is the library of Kmflcomp.
+KMFL is a keyboarding input method which aims to bring Tavultesoft
+Keyman functionality to Linux.
+
+libkmflcomp is one of three parts of the KMFL project. It is a 
+keyboard compiler library. The other two parts are libkmfl and 
+libscim-kmfl-imengine.
 
 
-%package -n %{libname}-devel
+%package -n %{develname}
 Summary:	Kmflcomp library
 Group:		Development/C
 Requires:	%libname = %version
 Provides:	lib%{name}-devel
-Conflicts:  %mklibname kmfl 0 < 0.8
+Obsoletes:	%{mklibname kmflcomp 0 -d}
 
-%description -n %{libname}-devel
+
+%description -n %{develname}
 Headers and static library of Kmflcomp.
 
 
 %prep
 %setup -q
-cp /usr/share/automake-1.9/mkinstalldirs .
 
 %build
-[[ ! -x configure ]] && ./autogen.sh
 %configure2_5x
 %make
 
@@ -68,18 +75,16 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root)
-%doc COPYING
+%doc AUTHORS ChangeLog
 %{_bindir}/kmflcomp
 
 %files -n %libname
 %defattr(-,root,root)
 %_libdir/libkmflcomp.so.*
 
-%files -n %{libname}-devel
+%files -n %{develname}
 %defattr(-,root,root)
 %_includedir/kmfl
 %_libdir/libkmflcomp.a
 %_libdir/libkmflcomp.la
 %_libdir/libkmflcomp.so
-
-
