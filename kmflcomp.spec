@@ -1,24 +1,20 @@
-%define name	kmflcomp
-%define version	0.9.6
-%define release	%mkrel 3
-
 %define major		0
 %define libname		%mklibname %name %major
 %define develname	%mklibname %name -d
 
-Name:		%{name}
+Name:		kmflcomp
 Summary:	Compiler for source Tavultesoft Keyman files
-Version:	%{version}
-Release:	%{release}
+Version:	0.9.6
+Release:	%mkrel 4
 Group:		System/Internationalization
 License:	GPLv2+
 URL:		http://kmfl.sourceforge.net/
 Source0:	http://prdownloads.sourceforge.net/kmfl/%{name}-%{version}.tar.gz
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	bison
 BuildRequires:	libx11-devel
 BuildRequires:	libxau-devel
 BuildRequires:	libxdmcp-devel
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 KMFL is a keyboarding input method which aims to bring Tavultesoft
@@ -39,7 +35,6 @@ libkmflcomp is one of three parts of the KMFL project. It is a
 keyboard compiler library. The other two parts are libkmfl and 
 libscim-kmfl-imengine.
 
-
 %package -n %{develname}
 Summary:	Kmflcomp library
 Group:		Development/C
@@ -47,15 +42,15 @@ Requires:	%libname = %version
 Provides:	lib%{name}-devel
 Obsoletes:	%{mklibname kmflcomp 0 -d}
 
-
 %description -n %{develname}
 Headers and static library of Kmflcomp.
-
 
 %prep
 %setup -q
 
 %build
+export LIBS="-lX11"
+
 %configure2_5x
 %make
 
