@@ -5,11 +5,12 @@
 Name:		kmflcomp
 Summary:	Compiler for source Tavultesoft Keyman files
 Version:	0.9.8
-Release:	%mkrel 1
+Release:	%mkrel 2
 Group:		System/Internationalization
 License:	GPLv2+
 URL:		http://kmfl.sourceforge.net/
 Source0:	http://prdownloads.sourceforge.net/kmfl/%{name}-%{version}.tar.gz
+Patch0:		kmflcomp-0.9.8-linkage.patch
 BuildRequires:	bison
 BuildRequires:	libx11-devel
 BuildRequires:	libxau-devel
@@ -39,7 +40,7 @@ libscim-kmfl-imengine.
 Summary:	Kmflcomp library
 Group:		Development/C
 Requires:	%{libname} = %{version}
-Provides:	lib%{name}-devel
+Provides:	%{name}-devel = %{version}-%{release}
 Obsoletes:	%{mklibname kmflcomp 0 -d}
 
 %description -n %{develname}
@@ -47,10 +48,9 @@ Headers and static library of Kmflcomp.
 
 %prep
 %setup -q
+%patch0 -p0
 
 %build
-export LIBS="-lX11"
-
 %configure2_5x
 %make
 
