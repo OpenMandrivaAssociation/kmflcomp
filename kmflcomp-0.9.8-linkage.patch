@@ -1,0 +1,24 @@
+--- kmfl_compiler/Makefile.am~	2008-09-09 17:21:11.000000000 +0200
++++ kmfl_compiler/Makefile.am	2009-11-15 11:45:50.000000000 +0100
+@@ -16,6 +16,6 @@
+ kmflcomp_SOURCES = \
+ 	kmfl_compiler.c
+ 
+-kmflcomp_LDFLAGS = -lX11 -L/usr/X11R6/lib
++kmflcomp_LDFLAGS = -L/usr/X11R6/lib
+ 
+-kmflcomp_LDADD = ../src/.libs/libkmflcomp.a
++kmflcomp_LDADD = ../src/.libs/libkmflcomp.a -lX11
+--- kmfl_compiler/Makefile.in~	2009-02-04 22:35:55.000000000 +0100
++++ kmfl_compiler/Makefile.in	2009-11-15 11:46:08.000000000 +0100
+@@ -206,8 +206,8 @@
+ kmflcomp_SOURCES = \
+ 	kmfl_compiler.c
+ 
+-kmflcomp_LDFLAGS = -lX11 -L/usr/X11R6/lib
+-kmflcomp_LDADD = ../src/.libs/libkmflcomp.a
++kmflcomp_LDFLAGS = -L/usr/X11R6/lib
++kmflcomp_LDADD = ../src/.libs/libkmflcomp.a -lX11
+ all: all-am
+ 
+ .SUFFIXES:
