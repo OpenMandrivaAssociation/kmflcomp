@@ -12,9 +12,9 @@ URL:		http://kmfl.sourceforge.net/
 Source0:	http://prdownloads.sourceforge.net/kmfl/%{name}-%{version}.tar.gz
 Patch0:		kmflcomp-0.9.8-linkage.patch
 BuildRequires:	bison
-BuildRequires:	libx11-devel
-BuildRequires:	libxau-devel
-BuildRequires:	libxdmcp-devel
+BuildRequires:	pkgconfig(x11)
+BuildRequires:	pkgconfig(xau)
+BuildRequires:	pkgconfig(xdmcp)
 
 %description
 KMFL is a keyboarding input method which aims to bring Tavultesoft
