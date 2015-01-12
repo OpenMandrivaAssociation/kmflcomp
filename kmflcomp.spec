@@ -50,7 +50,7 @@ Headers and static library of Kmflcomp.
 %apply_patches
 
 %build
-%configure2_5x
+%configure --enable-static
 
 %make
 
