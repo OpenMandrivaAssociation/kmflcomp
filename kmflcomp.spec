@@ -2,6 +2,8 @@
 %define libname	%mklibname %name %major
 %define devname	%mklibname %name -d
 
+%define _disable_lto 1
+
 Summary:	Compiler for source Tavultesoft Keyman files
 Name:		kmflcomp
 Version:	0.9.9
