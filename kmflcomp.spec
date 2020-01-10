@@ -49,7 +49,7 @@ Headers and static library of Kmflcomp.
 
 %prep
 %setup -q
-%apply_patches
+%autopatch -p1
 
 %build
 %configure --enable-static
