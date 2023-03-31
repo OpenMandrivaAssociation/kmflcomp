@@ -7,7 +7,7 @@
 Summary:	Compiler for source Tavultesoft Keyman files
 Name:		kmflcomp
 Version:	0.9.9
-Release:	13
+Release:	14
 Group:		System/Internationalization
 License:	GPLv2+
 Url:		http://kmfl.sourceforge.net/
