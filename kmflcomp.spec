@@ -10,7 +10,7 @@ Version:	0.9.9
 Release:	14
 Group:		System/Internationalization
 License:	GPLv2+
-Url:		http://kmfl.sourceforge.net/
+Url:		https://kmfl.sourceforge.net/
 Source0:	http://prdownloads.sourceforge.net/kmfl/%{name}-%{version}.tar.gz
 Patch0:		kmflcomp-0.9.8-linkage.patch
 
